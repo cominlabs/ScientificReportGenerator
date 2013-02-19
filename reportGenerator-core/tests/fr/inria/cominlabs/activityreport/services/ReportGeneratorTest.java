@@ -1,6 +1,7 @@
 package fr.inria.cominlabs.activityreport.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -55,10 +56,10 @@ public class ReportGeneratorTest {
 	}
 
 	@Test
-	public void test() {
+	public void test()  {
 		File file = new File(title);
 		assertTrue("Testing web service",ReportGenerator.getInfo()==null);
-		assertTrue("Testing web service",ReportGenerator.processHeaderDocument(file)==null);
+		assertFalse("Testing web service",ReportGenerator.processHeaderDocument(file)==null);
 		
 		//fail("Not yet implemented");
 	}

@@ -5,13 +5,11 @@
   <parent>
     <groupId>ReportGenerator</groupId>
     <artifactId>ReportGenerator</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
-  <groupId>ReportGenerator</groupId>
-  <artifactId>reportGenerator-webapp</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>ReportGenerator-webapp</artifactId>
   <packaging>war</packaging>
-  <name>reportGenerator-webapp Maven Webapp</name>
+  <name>ReportGenerator-webapp Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -22,6 +20,13 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>reportGenerator-webapp</finalName>
+    <finalName>ReportGenerator-webapp</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.10</version>
+</plugin>
+    </plugins>
   </build>
 </project>

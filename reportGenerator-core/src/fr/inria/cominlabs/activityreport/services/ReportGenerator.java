@@ -28,10 +28,12 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.multipart.FormDataMultiPart;
 
+import fr.inria.cominlabs.activityreport.core.TeiParser;
 import fr.inria.cominlabs.activityreport.model.Article;
 
-
+@SuppressWarnings("unused")
 public class ReportGenerator {
+
 	private static final Logger logger = LoggerFactory.getLogger(ReportGenerator.class);
 	
 	private final static String BASE_SERVICE_URL="http://localhost:8080/grobid-service-0.2.2";
@@ -47,7 +49,7 @@ public class ReportGenerator {
 		return null;
 	}
 	
-	public static String processHeaderDocument(File pdfFile) {
+	public static String processHeaderDocument(File pdfFile)  {
 	
 		String summary = "";
 		ClientConfig config = new DefaultClientConfig();
@@ -55,16 +57,16 @@ public class ReportGenerator {
 		URI uri = UriBuilder.fromUri(BASE_SERVICE_URL).build();
 		WebResource service = client.resource(uri);
 		FormDataMultiPart form = new FormDataMultiPart();
+		//processFulltextDocument
 		form.field("filecontent", pdfFile, MediaType.MULTIPART_FORM_DATA_TYPE);
-		ClientResponse response = service.path("processFulltextDocument").type(MediaType.MULTIPART_FORM_DATA_TYPE)
+		ClientResponse response = service.path("processHeaderDocument").type(MediaType.MULTIPART_FORM_DATA_TYPE)
 				                         .accept(MediaType.APPLICATION_XML)
 				                         .post(ClientResponse.class,form);
 		InputStream inputStream = response.getEntityInputStream();	
 		if(response.getClientResponseStatus().getStatusCode()==200) {
 			
-			
-			
-				try {
+			 	//TeiParser.retrieveAbstact(inputStream);
+     	try {
 					summary = getArticleAbstract(inputStream);
 				} catch (JDOMException e) {
 					// TODO Auto-generated catch block
@@ -72,7 +74,7 @@ public class ReportGenerator {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				} 
 			
 			
 		}
@@ -101,47 +103,20 @@ public class ReportGenerator {
 		return articleAbstract;
 	}
 	
-	@SuppressWarnings("unused")
-	private static String getArticleAbstract2(InputStream inputStream){
-		 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-		 String input;
-		 String articleAbstract = "";
-		 String motif="<div type=\"abstract\">.*?</div>";
-		 Pattern pat=Pattern.compile(motif);
-		 try {
-			while ((input = br.readLine()) != null) {
-					 System.out.println(input);
-					Matcher m=pat.matcher(input);
-					if (m.find()){
-						articleAbstract=m.group();
-						logger.info(" Abstract  "  + articleAbstract);
-						return articleAbstract;
-					}
-					
-				}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return articleAbstract;
-	}
-	public static List<Article> getArticlesWithSummaries(List<Article> articles){
+
+	
+public static List<Article> getArticlesWithSummaries(List<Article> articles){
 		
 		for(Article article : articles){
 			
 			File file = new File(article.getTitle());
 			if (file.exists()){
-				
-					String summary = processHeaderDocument(file);
-					article.setSummary(summary);
+				String summary = processHeaderDocument(file);
+				article.setSummary(summary);
 				}			
 		}
 		
 		return articles;
 		
 	}
-
-	
-
 }
