@@ -1,0 +1,54 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  
+  <context-param>
+  <param-name>javax.faces.PROJECT_STAGE </param-name>
+  <param-value>Developement</param-value>
+  </context-param>
+   <servlet>
+  <servlet-name>Faces Servlet</servlet-name>
+  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>*.faces</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>/faces/*</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+  <filter-name>MyFacesExtensionsFilter</filter-name>
+  <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>MyFacesExtensionsFilter</filter-name>
+  <servlet-name>Faces Servlet</servlet-name>
+  </filter-mapping>
+  
+  <servlet>
+	 <servlet-name>DemoServlet</servlet-name>
+	<servlet-class>fr.inria.cominlabs.activityreport.webapp.servlet.DemoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	 <servlet-name>DemoServlet</servlet-name>
+	 <url-pattern>/DemoServlet</url-pattern>
+	</servlet-mapping>
+</web-app>

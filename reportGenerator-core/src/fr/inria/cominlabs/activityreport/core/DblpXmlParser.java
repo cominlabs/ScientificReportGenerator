@@ -92,7 +92,7 @@ public class DblpXmlParser {
 		 *  @return Object of type java.util.List containing a list of articles to download.
 		 */
 	  public static List<Article> xmlFileParser(String dblp_link, int year_of_publication) throws JDOMException, IOException {
-		  
+		  if (dblp_link !=null && !dblp_link.equals("")){
 		  String dblp_link_xml=getXmlUrl(dblp_link);
 		  URL dblp_link_xml_url = new URL(dblp_link_xml);
 		  SAXBuilder builder = new SAXBuilder();
@@ -142,6 +142,8 @@ public class DblpXmlParser {
 		 
 				}
 			return articles;
+		  }
+		  return null;
 			 	
 		  
 	  }
@@ -154,12 +156,11 @@ public class DblpXmlParser {
 	  
 	  public static String getXmlUrl(String url){
 		  String result=null;
-		  result=url.substring(DBLP_URL_START.length());
-		  result=result.replaceAll("\\.html","");
-		  result=DBLP_XML_LINK+result;
-		  System.out.println( result);
+			  result=url.substring(DBLP_URL_START.length());
+			  result=result.replaceAll("\\.html","");
+			  result=DBLP_XML_LINK+result;
+             System.out.println( result);			 
 		  return result;
-		  
 	  }
 	
 	  

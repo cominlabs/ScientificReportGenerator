@@ -4,17 +4,12 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.MalformedURLException;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import fr.inria.cominlabs.activityreport.articlesdownloader.Downloader;
 
 public class ReportGeneratorTest {
 	
@@ -31,22 +26,7 @@ public class ReportGeneratorTest {
 	}
 
 	@Before
-	public void setUp() throws Exception {
-		String title ="best position Algorithm";
-		String url = "http://www-sop.inria.fr/members/Patrick.Valduriez/pmwiki/Patrick/uploads//Publications/AkbariniaBpaVLDB07.pdf";
-		try {
-			Downloader.downloadFileFromUrl(url, title);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		  
+	public void setUp() throws Exception {	  
 	}
 
 	@After

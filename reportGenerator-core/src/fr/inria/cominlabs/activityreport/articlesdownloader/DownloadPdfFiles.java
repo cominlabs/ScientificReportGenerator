@@ -32,27 +32,18 @@ public class DownloadPdfFiles {
 	public static List<Article> getAllPdfFiles(List<Article> articles) throws MalformedURLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, SecurityException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
 		Vector<String> search_from_google=new Vector<String>();
 		for(Article article : articles){
+			System.out.println("Article " + article.getTitle());
 			
-			if(article.getUrl().endsWith(".pdf")){
+				search_from_google.addElement(article.getTitle());
+		
+		/*	if((article.getUrl()!= null)&&article.getUrl().endsWith(".pdf")){
 				Downloader.downloadFileFromUrl(article.getUrl(),article.getTitle());
 				logger.info("This is direct downloaded link");
 			}
-		/*	else if(getPaperEditor(article.getUrl())!=null){
-				String found=getPaperEditor(article.getUrl());
-				found="fr.inria.cominlabs.activityreport.handler." +found;
-				 ClassLoader myClassLoader = ClassLoader.getSystemClassLoader();
-				 Class<?> myClass = myClassLoader.loadClass(found);
-				 Object whatInstance = myClass.newInstance();
-				 Method myMethod = myClass.getMethod("get_download_link",new Class[] { String.class });
-				 String returnValue = (String) myMethod.invoke(whatInstance,new Object[] {article.getUrl()});
-				 logger.info("Everything seems to be ok");
-				 Downloader.downloadFileFromUrl(returnValue,article.getTitle());
-				 logger.info("This is downloaded using predifined publishers website parser");
-				 
-			}*/
+	
 			else{
 				search_from_google.addElement(article.getTitle());
-			}
+			}*/
 		}
 		
 		for(int i=0;i<search_from_google.size();i++){

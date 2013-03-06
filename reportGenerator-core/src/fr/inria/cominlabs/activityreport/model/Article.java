@@ -2,6 +2,12 @@ package fr.inria.cominlabs.activityreport.model;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+
+@ManagedBean(name="articleBean")
+@RequestScoped
 public class Article {
 	
 	private int year;

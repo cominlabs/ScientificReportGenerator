@@ -33,10 +33,10 @@ public class DblpXmlParserTest {
 	public void setUp() throws Exception {
 		author1Url = "http://www.informatik.uni-trier.de/~ley/pers/hd/b/Benveniste:Albert.html";
 		author2Url = "http://www.informatik.uni-trier.de/~ley/pers/hd/k/Kermarrec:Anne=Marie.html";
-		author3Url = "http://www.informatik.uni-trier.de/~ley/pers/hd/f/Frey:Davide.html";
+		author3Url = "http://www.informatik.uni-trier.de/~ley/pers/hd/m/Molli:Pascal.html";
 		author1XmlUrl = "http://dblp.uni-trier.de/pers/xx/b/Benveniste:Albert";
 		author2XmlUrl = "http://dblp.uni-trier.de/pers/xx/k/Kermarrec:Anne=Marie";
-		author3XmlUrl = "http://dblp.uni-trier.de/pers/xx/f/Frey:Davide";
+		author3XmlUrl = "http://dblp.uni-trier.de/pers/xx/m/Molli:Pascal";
 		myTestFilename ="testingfile";
 		DblpXmlParser.storeToXmlFile(myTestFilename, author2Url);
 		
@@ -59,6 +59,7 @@ public class DblpXmlParserTest {
 		assertTrue("Testing if the xml file is created correctly", (new File(myTestFilename)).exists());
 		try {
 			assertFalse("Testing the XML parsing",(DblpXmlParser.xmlFileParser(author2Url, 2012)).isEmpty());
+			assertFalse("Testing the XML parsing",(DblpXmlParser.xmlFileParser(author3Url, 2006)).isEmpty());
 		} catch (JDOMException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -111,8 +111,15 @@ public static List<Article> getArticlesWithSummaries(List<Article> articles){
 			
 			File file = new File(article.getTitle());
 			if (file.exists()){
+				
 				String summary = processHeaderDocument(file);
-				article.setSummary(summary);
+				if (summary!=null){
+					article.setSummary(summary);
+				}
+				else {
+					article.setSummary("");
+				}
+				
 				}			
 		}
 		
