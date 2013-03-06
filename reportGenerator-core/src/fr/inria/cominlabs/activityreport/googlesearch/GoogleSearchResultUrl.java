@@ -20,6 +20,7 @@ public class GoogleSearchResultUrl {
 	 *  @return Object of type java.lang.String representing the URL of page of the a result.
 	 */
 	
+
 	public static String getResultUrl(String title) throws IOException{
 		String url_title = "";
 		String default_title_url = "";
@@ -47,6 +48,7 @@ public class GoogleSearchResultUrl {
 		return default_title_url;
 		
 	}
-	
+
+
 	
 }

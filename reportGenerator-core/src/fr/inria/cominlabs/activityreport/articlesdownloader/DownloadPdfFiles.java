@@ -5,9 +5,15 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,12 +52,31 @@ public class DownloadPdfFiles {
 			}*/
 		}
 		
+		ExecutorService downloadExecutorService = Executors.newFixedThreadPool(10);
+		List<Callable<Boolean>> downloadCallable = new ArrayList<Callable<Boolean>>();
+		
 		for(int i=0;i<search_from_google.size();i++){
 			String element=search_from_google.get(i); 
-			    String s=GoogleSearchResultUrl.getResultUrl(element);
-				Downloader.downloadFileFromUrl(s,element);
+			//searchCallable.add(new GoogleSearchResultUrl(element));
+			  String s=GoogleSearchResultUrl.getResultUrl(element);
+			  downloadCallable.add(new Downloader(s,element));
+				//Downloader.downloadFileFromUrl(s,element);
 			    logger.info("This is downloaded using Google");
 			 
+		}
+		
+		List<Future<Boolean>> downloadResults = new ArrayList<Future<Boolean>>();
+		try {
+			 downloadResults = downloadExecutorService.invokeAll(downloadCallable);
+			 for(Future<Boolean> f:downloadResults){
+				 logger.info("File downloaded or not " + f.get().booleanValue());
+			 }
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return ReportGenerator.getArticlesWithSummaries(articles);

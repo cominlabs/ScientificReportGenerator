@@ -11,6 +11,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.concurrent.Callable;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -22,9 +23,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class Downloader {
+public class Downloader implements Callable<Boolean>{
    
 	private static final Logger logger = LoggerFactory.getLogger(Downloader.class);
+	private String url;
+	private String title;
+	
+	
+	public Downloader(String url,String title){
+		this.url = url;
+		this.title = title;
+	}
 	
 	
 	public static boolean downloadFileFromUrl(String url,String title) {
@@ -152,6 +161,35 @@ public class Downloader {
 		    
 		    return status;
 		  }
+
+
+
+	@Override
+	public Boolean call() throws Exception {
+		 boolean status = false;
+		    try {
+			URLConnection con = new URL(url).openConnection();
+			 BufferedInputStream in = new BufferedInputStream(con.getInputStream());
+			 logger.info("Resource is accesible...");
+			 FileOutputStream out = new FileOutputStream(title);
+			  int i = 0;
+			    byte[] bytesIn = new byte[1024];
+			    while ((i = in.read(bytesIn)) >= 0) {
+			        out.write(bytesIn, 0, i);
+			    }
+			    out.close();
+			    in.close();
+			    status = true;
+			    logger.info("File downloaded.");
+		    }
+		    catch (Exception e) {
+		      
+		    	 status = false;
+		    	 logger.info("Resource is not accesible...");
+		    }
+		    
+		    return status;
+	}
 	 
 	  
 		
