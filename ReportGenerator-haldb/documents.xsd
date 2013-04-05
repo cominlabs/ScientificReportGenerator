@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"  elementFormDefault="qualified"  attributeFormDefault="unqualified" >
+         <!-- XML Schema Generated from XML Document on Wed Apr 03 2013 17:56:59 GMT+0200 (CEST) -->
+         <!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+         <xs:element name="documents" >
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:element name="typdoc"  maxOccurs="unbounded" >
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="document"  maxOccurs="unbounded" >
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="authors" >
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="author"  maxOccurs="unbounded" >
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="forename"  type="xs:string" />
+                                                                                                   <xs:element name="othername" />
+                                                                                                   <xs:element name="surname"  type="xs:string" />
+                                                                                                   <xs:element name="email"  type="xs:string" />
+                                                                                                   <xs:element name="affiliations" >
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:sequence>
+                                                                                                                     <xs:element name="affiliation" >
+                                                                                                                           <xs:complexType>
+                                                                                                                                 <xs:sequence>
+                                                                                                                                       <xs:element name="sigle"  type="xs:string" />
+                                                                                                                                       <xs:element name="name"  type="xs:string" />
+                                                                                                                                       <xs:element name="pays"  type="xs:string" />
+                                                                                                                                       <xs:element name="tutelles" >
+                                                                                                                                             <xs:complexType>
+                                                                                                                                                   <xs:sequence>
+                                                                                                                                                         <xs:element name="tutelle"  maxOccurs="unbounded"  type="xs:string" />
+                                                                                                                                                   </xs:sequence>
+                                                                                                                                            </xs:complexType>
+                                                                                                                                       </xs:element>
+                                                                                                                                 </xs:sequence>
+                                                                                                                           </xs:complexType>
+                                                                                                                     </xs:element>
+                                                                                                               </xs:sequence>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                             </xs:sequence>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="id_article"  type="xs:string" />
+                                                               <xs:element name="domain"  type="xs:string" />
+                                                               <xs:element name="title"  type="xs:string" />
+                                                               <xs:element name="auteur_nomprenom"  type="xs:string" />
+                                                               <xs:element name="auteur_nominitial"  type="xs:string" />
+                                                               <xs:element name="pauteur_etal"  type="xs:string" />
+                                                               <xs:element name="laboratoire"  type="xs:string" />
+                                                               <xs:element name="researchteam"  type="xs:string" />
+                                                               <xs:element name="sstitle" />
+                                                               <xs:element name="abstract"  type="xs:string" />
+                                                               <xs:element name="abstract_ml" />
+                                                               <xs:element name="langue"  type="xs:string" />
+                                                               <xs:element name="writing_date"  type="xs:date" />
+                                                               <xs:element name="doi"  type="xs:string" />
+                                                               <xs:element name="isbn" />
+                                                               <xs:element name="journal"  type="xs:string" />
+                                                               <xs:element name="titouv" />
+                                                               <xs:element name="audience"  type="xs:string" />
+                                                               <xs:element name="datepub"  type="xs:date" />
+                                                               <xs:element name="anneepub"  type="xs:int" />
+                                                               <xs:element name="dateepub" />
+                                                               <xs:element name="volume"  type="xs:int" />
+                                                               <xs:element name="issue"  type="xs:int" />
+                                                               <xs:element name="page"  type="xs:string" />
+                                                               <xs:element name="edcom" />
+                                                               <xs:element name="edsci" />
+                                                               <xs:element name="serie" />
+                                                               <xs:element name="titconf" />
+                                                               <xs:element name="dateconf" />
+                                                               <xs:element name="anneeconf" />
+                                                               <xs:element name="datefinconf" />
+                                                               <xs:element name="ville" />
+                                                               <xs:element name="pays" />
+                                                               <xs:element name="dircoll" />
+                                                               <xs:element name="description" />
+                                                               <xs:element name="numbrevet" />
+                                                               <xs:element name="datebrevet" />
+                                                               <xs:element name="keyword"  type="xs:string" />
+                                                               <xs:element name="keyword_ml" />
+                                                               <xs:element name="motcle" />
+                                                               <xs:element name="keyword_mesh" />
+                                                               <xs:element name="keyword_jel" />
+                                                               <xs:element name="classification"  type="xs:string" />
+                                                               <xs:element name="comment" />
+                                                               <xs:element name="ref_interne" />
+                                                               <xs:element name="collaboration" />
+                                                               <xs:element name="financement" />
+                                                               <xs:element name="projetanr" />
+                                                               <xs:element name="projeteurope" />
+                                                               <xs:element name="defencedate" />
+                                                               <xs:element name="orgthe" />
+                                                               <xs:element name="thesis_school" />
+                                                               <xs:element name="speciality" />
+                                                               <xs:element name="numnat" />
+                                                               <xs:element name="directeurThese" />
+                                                               <xs:element name="jury" />
+                                                               <xs:element name="presidentHDR" />
+                                                               <xs:element name="niveau" />
+                                                               <xs:element name="lieucours" />
+                                                               <xs:element name="arxivid" />
+                                                               <xs:element name="typdoc"  type="xs:string" />
+                                                               <xs:element name="havefile"  type="xs:int" />
+                                                               <xs:element name="yearstamp"  type="xs:date" />
+                                                               <xs:element name="files_url" >
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="file_url"  type="xs:string" />
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="contributor"  type="xs:string" />
+                                                         </xs:sequence>
+                                                         <xs:attribute name="id"  type="xs:string" />
+                                                         <xs:attribute name="version"  type="xs:int" />
+                                                         <xs:attribute name="uniqid"  type="xs:string" />
+                                                         <xs:attribute name="url"  type="xs:string" />
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                       <xs:attribute name="name"  type="xs:string" />
+                                       <xs:attribute name="id"  type="xs:string" />
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>

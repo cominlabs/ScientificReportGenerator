@@ -17,6 +17,7 @@
 
 
   	<module>HalDatabaseCreator</module>
+  	<module>ReportGenerator-haldb</module>
   </modules>
   <dependencyManagement>
   	<dependencies>
