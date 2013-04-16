@@ -2,8 +2,6 @@ package fr.inria.cominlabs.activityreport.haldb.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigInteger;
-import java.util.Date;
 import java.util.List;
 
 
@@ -20,18 +18,16 @@ public class Document implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String documentID;
 
-	private BigInteger authorID;
-
-	@Temporal(TemporalType.DATE)
-	private Date datePub;
-
 	@Lob
 	private String documentAbstract;
 
 	@Lob
 	private String documentContent;
 
+	@Lob
 	private String documentTitle;
+
+	private Integer yearPub;
 
 	//bi-directional many-to-many association to Author
 	@ManyToMany(mappedBy="documents")
@@ -51,22 +47,6 @@ public class Document implements Serializable {
 
 	public void setDocumentID(String documentID) {
 		this.documentID = documentID;
-	}
-
-	public BigInteger getAuthorID() {
-		return this.authorID;
-	}
-
-	public void setAuthorID(BigInteger authorID) {
-		this.authorID = authorID;
-	}
-
-	public Date getDatePub() {
-		return this.datePub;
-	}
-
-	public void setDatePub(Date datePub) {
-		this.datePub = datePub;
 	}
 
 	public String getDocumentAbstract() {
@@ -91,6 +71,14 @@ public class Document implements Serializable {
 
 	public void setDocumentTitle(String documentTitle) {
 		this.documentTitle = documentTitle;
+	}
+
+	public Integer getYearPub() {
+		return this.yearPub;
+	}
+
+	public void setYearPub(Integer yearPub) {
+		this.yearPub = yearPub;
 	}
 
 	public List<Author> getAuthors() {

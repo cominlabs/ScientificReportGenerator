@@ -69,5 +69,11 @@ public class Author implements Serializable {
 	public void setDocuments(List<Document> documents) {
 		this.documents = documents;
 	}
-
+	
+	public void addDocuments(Document documents){
+	    if (!this.documents.contains(documents)){
+		this.documents.add( documents);
+	    }
+	    
+	}
 }

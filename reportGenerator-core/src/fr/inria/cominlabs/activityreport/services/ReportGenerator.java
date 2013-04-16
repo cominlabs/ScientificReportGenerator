@@ -84,6 +84,34 @@ public class ReportGenerator {
 		return summary;
 	}
 	
+	public static String processFullDocument(File pdfFile)  {
+		
+		String fullDocument = "";
+		ClientConfig config = new DefaultClientConfig();
+		Client client = Client.create(config);
+		URI uri = UriBuilder.fromUri(BASE_SERVICE_URL).build();
+		WebResource service = client.resource(uri);
+		FormDataMultiPart form = new FormDataMultiPart();
+		//processFulltextDocument
+		form.field("filecontent", pdfFile, MediaType.MULTIPART_FORM_DATA_TYPE);
+		ClientResponse response = service.path("processFulltextDocument").type(MediaType.MULTIPART_FORM_DATA_TYPE)
+				                         .accept(MediaType.APPLICATION_XML)
+				                         .post(ClientResponse.class,form);
+		//response.wait(timeout)
+		InputStream inputStream = response.getEntityInputStream();
+		if(response.getClientResponseStatus().getStatusCode()==200) {
+		   
+			
+			 	//TeiParser.retrieveAbstact(inputStream);
+ 	
+		    fullDocument = inputStreamToString(inputStream);
+				
+		}
+		return fullDocument;		
+	}
+	
+	
+	
 	private static String getArticleAbstract(InputStream inputStream) throws JDOMException, IOException{
 		SAXBuilder builder = new SAXBuilder();
 		String articleAbstract = "";
@@ -103,6 +131,27 @@ public class ReportGenerator {
 		return articleAbstract;
 	}
 	
+	
+private static String inputStreamToString (InputStream is){
+    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+	StringBuilder sb = new StringBuilder();
+	 
+	String line;
+	try {
+	    while ((line = br.readLine()) != null) {
+	    	sb.append(line);
+	    }
+	    br.close();
+	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	} 
+
+	return sb.toString();
+
+	
+    
+}
 
 	
 public static List<Article> getArticlesWithSummaries(List<Article> articles){

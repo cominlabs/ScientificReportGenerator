@@ -13,11 +13,8 @@
   <modules>
   	<module>reportGenerator-core</module>
   	<module>reportGenerator-webapp</module>
-
-
-
-  	<module>HalDatabaseCreator</module>
   	<module>ReportGenerator-haldb</module>
+  	<module>ReportGenerator-clustering</module>
   </modules>
   <dependencyManagement>
   	<dependencies>

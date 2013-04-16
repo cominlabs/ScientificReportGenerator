@@ -22,14 +22,11 @@ public class Main {
     public static void main(String[] args) {
 	// TODO Auto-generated method stub
 	
-	String filename = "halFoton.xml";
-	try {
-	    HaldbService.appendToDatabase(filename);
-	} catch (JAXBException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}
-	
+	 //String filename = "halFoton.xml";
+	 //String filename = "halInstitutTelecom2010.xml";
+	  String filename = "halLina.xml";
+	 //parsing(filename);
+	createDatabase(filename);
 
     }
     
@@ -42,12 +39,14 @@ public class Main {
 	    List<Typdoc> listOfTypdoc = documents.getTypdoc();
 	    int size = 0;
 	    for(Typdoc typdoc : listOfTypdoc ){
-		//System.out.println("typdocID: " + typdoc.getId() +  "typdocName:" + typdoc.getName());
-		List<Document> listDocument = typdoc.getDocument();
+		//System.out.println("typdocID: " + typdoc.getId() +  "   typdocName:" + typdoc.getName());
+		 List<Document> listDocument = typdoc.getDocument();
 		
 		for(Document document : listDocument ){
 		    size = size +1;
-		    System.out.println("Titre: " + document.getTitle() +  " Abstract: " + document.getAbstract() +" AnneePub: " + document.getAnneepub() );
+		   // System.out.println("Titre: " + document.getTitle() +  " Abstract: " + document.getAbstract() +" AnneePub: " + document.getAnneepub() );
+		    System.out.println(" DatePub: " + document.getDatepub() + " AnneePub : " +  document.getAnneepub() +  " AnneeDefense: "+document.getDefencedate().toString());
+
 		    List<Author> listAuthor = document.getAuthors().getAuthor();
 		    for(Author author : listAuthor ){
 			System.out.println("SurName: "  + author.getSurname() + " ForeName:"  + author.getForename());
@@ -64,6 +63,15 @@ public class Main {
 	    e.printStackTrace();
 	}
 	
+    }
+    
+    public static void createDatabase(String filename){
+	try {
+	    HaldbService.appendToDatabase(filename);
+	} catch (JAXBException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
     }
 
 }
