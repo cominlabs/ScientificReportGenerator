@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Wed Apr 17 14:03:29 CEST 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-013e-17e0-ceba-000004eb1a58 
+on database directory memory:/Users/william/Documents/CominWebDevTools/sourceCode/reportGenerator/ReportGenerator-haldb/PubliDB  with class loader sun.misc.Launcher$AppClassLoader@69cd2e5f 
+Loaded from file:/Users/william/.m2/repository/org/apache/derby/derby/10.9.1.0/derby-10.9.1.0.jar
+java.vendor=Apple Inc.
+java.runtime.version=1.6.0_43-b01-447-11M4203
+user.dir=/Users/william/Documents/CominWebDevTools/sourceCode/reportGenerator/ReportGenerator-haldb
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

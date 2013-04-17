@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<h:head>
+<title> Activity report generator</title>
+</h:head>
+<h:body>  
+<h1> Report Demo</h1>
+<h:form enctype="multipart/form-data">
+<fieldset>
+<legend>Activity report generator</legend>
+ <h:messages style="color:red;margin:8px;" />
+<h:panelGrid columns="3">
+Enter authors file :
+<t:inputFileUpload id="filePath" value="#{ReportForm.file}" size="30" required="true" label="FilePath" />
+<h:message for="filePath" style="color:red" />
+
+Enter the year of the report :
+<h:inputText id="year" value="#{ReportForm.year}" size="20" required="true" >
+  <f:validateLongRange for="year" minimum="1980" maximum="2030" />
+ </h:inputText> 
+ <h:message for="year" style="color:red"/>
+</h:panelGrid>
+<h:commandButton value="submit" action="#{ReportForm.submit}" />
+</fieldset>
+</h:form>
+</h:body>
+</html>

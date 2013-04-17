@@ -30,7 +30,8 @@ public class AuthorTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-	
+	entityManager = Persistence.createEntityManagerFactory("ReportGenerator-haldb").createEntityManager();
+	entityTransaction = entityManager.getTransaction();
     }
 
     @AfterClass
@@ -40,8 +41,7 @@ public class AuthorTest {
 
     @Before
     public void setUp() throws Exception {
-	entityManager = Persistence.createEntityManagerFactory("ReportGenerator-haldb").createEntityManager();
-	entityTransaction = entityManager.getTransaction();
+	
     }
     
     @Test

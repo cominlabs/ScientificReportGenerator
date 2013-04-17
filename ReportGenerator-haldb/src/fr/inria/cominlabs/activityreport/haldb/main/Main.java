@@ -22,11 +22,12 @@ public class Main {
     public static void main(String[] args) {
 	// TODO Auto-generated method stub
 	
-	 //String filename = "halFoton.xml";
-	 //String filename = "halInstitutTelecom2010.xml";
-	  String filename = "halLina.xml";
-	 //parsing(filename);
-	createDatabase(filename);
+	  //String filename = "halFoton.xml";
+	   String filename = "halInstitutTelecom2010.xml";
+	  //String filename = "halLina.xml";
+	 // System.out.println("Salut les copains");
+	  parsing(filename);
+	//createDatabase(filename);
 
     }
     
