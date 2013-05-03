@@ -25,6 +25,11 @@
   			<artifactId>reportGenerator-core</artifactId>
   			<version>${project.version}</version>
   		</dependency>
+  		<dependency>
+  			<groupId>ReportGenerator</groupId>
+  			<artifactId>reportGenerator-core</artifactId>
+  			<version>1.0-SNAPSHOT</version>
+  		</dependency>
   	</dependencies>
   </dependencyManagement>
 </project>
